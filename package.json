@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "./index.js",
   "scripts": {
-    "start": "concurrently --kill-others \"node index.js\" \"cd webclient && yarn start\"",
+    "start": "nodemon ./index.js --ignore ./db",
     "dev": "nodemon ./index.js --ignore ./db",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm install",
-    "build-all": "npm install --prefix ./webclient && npm run build --prefix ./webclient && npm install",
     "install-client": "cd webclient && npm install",
+    "start-all": "concurrently --kill-others \"node index.js\" \"cd webclient && yarn start\"",
+    "build-all": "npm install --prefix ./webclient && npm run build --prefix ./webclient && npm install",
     "install-all": "npm install && npm run install-client"
   },
   "keywords": [],
