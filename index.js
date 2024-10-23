@@ -8,28 +8,6 @@ const app = express();
 dotenv.config();
 db.connect();
 
-const allowedOrigins = [
-  `http://localhost:${process.env.PORT}`,
-  process.env.NEXT_PUBLIC_REACT_APP_FRONTEND_BASE_URL,
-];
-
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
-
-app.use(express.json());
-// app.use(cors());
-app.use(express.urlencoded({ extended: true }));
-
 app.use((req, res, next) => {
   const { method, path } = req;
 
@@ -41,6 +19,9 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 app.use("/api", router);
 
 // Error handling middleware
