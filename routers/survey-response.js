@@ -9,13 +9,9 @@ const {
   saveSurveyResponse,
 } = require("../controller/survey-response");
 
-router.get("/api/survey-response", getSurveyResponses);
-router.get("/api/survey-response/:id", getSurveyResponseById);
-router.post(
-  "/api/survey-response",
-  validate("add-response"),
-  saveSurveyResponse
-);
+router.get("/survey-response", getSurveyResponses);
+router.get("/survey-response/:id", getSurveyResponseById);
+router.post("/survey-response", validate("add-response"), saveSurveyResponse);
 
 // Export the router
 module.exports = router;

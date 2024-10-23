@@ -11,11 +11,11 @@ const {
   deleteSurvey,
 } = require("../controller/survey");
 
-router.get("/api/survey", getSurveys);
-router.get("/api/survey/:id", getSurveyById);
-router.post("/api/survey", validate("add-survey"), saveSurvey);
-router.put("/api/survey/:id", validate("put-survey"), updateSurvey);
-router.delete("/api/survey/:id", deleteSurvey);
+router.get("/survey", getSurveys);
+router.get("/survey/:id", getSurveyById);
+router.post("/survey", validate("add-survey"), saveSurvey);
+router.put("/survey/:id", validate("put-survey"), updateSurvey);
+router.delete("/survey/:id", deleteSurvey);
 
 // Export the router
 module.exports = router;

@@ -2,6 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  rewrites: async () => {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "/api/:path*", // This will proxy to the same domain
+      },
+    ];
+  },
   async headers() {
     return [
       {

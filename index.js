@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 // app.use(cors());
 app.use(express.urlencoded({ extended: true }));
-app.use("/", router);
+app.use("/api", router);
 
 const allowedOrigins = [
   process.env.NEXT_PUBLIC_REACT_APP_FRONTEND_BASE_URL,
