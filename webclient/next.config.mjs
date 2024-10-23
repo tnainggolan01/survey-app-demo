@@ -2,14 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  rewrites: async () => {
-    return [
-      {
-        source: "/api/:path*",
-        destination: `${process.env.NEXT_PUBLIC_REACT_APP_BACKEND_BASE_URL}/api/:path*`, // This will proxy to the same domain
-      },
-    ];
-  },
   async headers() {
     return [
       {

@@ -29,12 +29,6 @@ app.use(
 app.use(express.json());
 // app.use(cors());
 app.use(express.urlencoded({ extended: true }));
-app.use((err, req, res, next) => {
-  console.error("Error:", err);
-  res
-    .status(500)
-    .json({ message: "Internal server error", error: err.message });
-});
 
 app.use((req, res, next) => {
   const { method, path } = req;
@@ -49,18 +43,12 @@ app.use((req, res, next) => {
 
 app.use("/api", router);
 
-// Catch-all route to redirect non-API requests to frontend
-app.all("*", (req, res) => {
-  // Check if the request path starts with /api
-  if (!req.baseUrl.startsWith("/api")) {
-    // Redirect to frontend service
-    res.redirect(
-      process.env.NEXT_PUBLIC_REACT_APP_FRONTEND_BASE_URL + req.originalUrl
-    );
-  } else {
-    // Handle 404 for API routes that don't exist
-    res.status(404).json({ message: "API route not found" });
-  }
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error("Error:", err);
+  res
+    .status(500)
+    .json({ message: "Internal server error", error: err.message });
 });
 
 const PORT = process.env.SERVER_PORT;
