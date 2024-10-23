@@ -24,7 +24,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use("/", router);
 
-const PORT = process.env.PORT;
+const PORT = process.env.SERVER_PORT;
 app.listen(PORT, () => {
   console.log(`Server running on PORT: ${PORT}`);
 });
