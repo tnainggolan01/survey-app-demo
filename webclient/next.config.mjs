@@ -6,7 +6,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "/api/:path*", // This will proxy to the same domain
+        destination: `${process.env.NEXT_PUBLIC_REACT_APP_BACKEND_BASE_URL}/api/:path*`, // This will proxy to the same domain
       },
     ];
   },
