@@ -1,9 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL:
-    `${process.env.NEXT_PUBLIC_REACT_APP_BACKEND_BASE_URL}/api` ||
-    `${process.env.NEXT_PUBLIC_REACT_APP_BACKEND_LOCAL_BASE_URL}/api`,
+  baseURL: `${process.env.NEXT_PUBLIC_REACT_APP_BACKEND_BASE_URL}/api`,
 });
 
 // Questionnaire Builder APIs

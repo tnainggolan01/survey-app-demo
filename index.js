@@ -20,27 +20,23 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api", router);
 
-const allowedOrigins = [
-  process.env.NEXT_PUBLIC_REACT_APP_FRONTEND_BASE_URL,
-  process.env.NEXT_PUBLIC_REACT_APP_FRONTEND_LOCAL_BASE_URL,
-];
-
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
+// Catch-all route to redirect non-API requests to frontend
+app.use("*", (req, res) => {
+  // Check if the request path starts with /api
+  if (!req.baseUrl.startsWith("/api")) {
+    // Redirect to frontend service
+    res.redirect(
+      process.env.NEXT_PUBLIC_REACT_APP_FRONTEND_BASE_URL + req.originalUrl
+    );
+  } else {
+    // Handle 404 for API routes that don't exist
+    res.status(404).json({ message: "API route not found" });
+  }
+});
 
 const PORT = process.env.SERVER_PORT;
 app.listen(PORT, () => {
