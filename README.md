@@ -1,6 +1,10 @@
 # survey-app-demo
 
-This is a demo full-stack application that showcases how we can use SurveyJS to build an application for creating, managing, and responding to questionnaires. The application is built with the MERN stack (MongoDB, Express.js, React/Next.js, Node.js). It provides an interface for building custom questionnaires and managing responses. You may access the live demo from this link: https://survey-app-demo.onrender.com (you may need to wait for a minute or more until the page is fully loaded).
+This is a demo full-stack application that showcases how we can use SurveyJS to build an application for creating, managing, and responding to questionnaires. The application is built with the MERN stack (MongoDB, Express.js, React/Next.js, Node.js). It provides an interface for building custom questionnaires and managing responses. You may access the live demo from this link: https://survey-app-demo.onrender.com (you may need to wait for a minute or more until the page is fully loaded because the server is turned to sleep mode when there is no traffic).
+
+## Disclaimer
+
+This is a just a demo app created by the author as a mean to learn about Next.js, Tailwind CSS, and SurveyJS. Do not expect to find anything fancy.
 
 ## Features
 
